@@ -1,5 +1,5 @@
 PROGS = gdb_ex1 gdb_ex2 gdb_ex3 first_c first_a add_test
-OBJS = first_a.o add.o
+OBJS = first_a.o add.o add
 CFLAGS = -g
 
 all : ${PROGS}
