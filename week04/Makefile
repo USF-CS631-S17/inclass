@@ -1,5 +1,5 @@
 PROGS = first_c first_a add_test
-OBJS = first_a.o add.o add
+OBJS = first_a.o add.o max.o
 CFLAGS = -g
 
 all : ${PROGS}
@@ -11,8 +11,12 @@ first_a : first_a.s
 add.o : add.s
 	as -o add.o add.s
 
-add_test : add_test.c add.o
-	gcc -o add_test add_test.c add.o
+max.o : max.s
+	as -o max.o max.s
+
+add_test : add_test.c add.o max.o
+	gcc -o add_test add_test.c add.o max.o
+
 
 clean :
 	rm -rf ${PROGS} ${OBJS}

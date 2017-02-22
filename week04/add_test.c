@@ -2,11 +2,17 @@
 
 int add(int a, int b);
 
+int max(int a, int b);
+
 int main(int argc, char **argv)
 {
     int r;
 
     r = add(1,3);
+
+    printf("r = %d\n", r);
+
+    r = max(1,3);
 
     printf("r = %d\n", r);
 
