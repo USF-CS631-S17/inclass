@@ -1,7 +1,7 @@
-.global count_zeros_a
-.func count_zeros_a
+.global count_zeros_fixed_a
+.func count_zeros_fixed_a
 
-count_zeros_a:
+count_zeros_fixed_a:
         sub sp, sp, #8
         str r4, [sp]
         
