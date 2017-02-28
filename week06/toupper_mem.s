@@ -1,16 +1,19 @@
 .data
 hello_str:
         .asciz "hello"
+        
+.text
 
-.text        
 .globl main
 .func main
 main:
         sub sp, sp, #8
         str lr, [sp]
 
-        /* stack memory */
         sub sp, sp, #8
+
+        /* stack allocation */
+        
         mov r0, #'h'
         strb r0, [sp]
         mov r0, #'e'
@@ -20,9 +23,9 @@ main:
         mov r0, #'l'
         strb r0, [sp, #3]
         mov r0, #'o'
-        strb r0, [sp, #4]        
+        strb r0, [sp, #4]
         mov r0, #0
-        strb r0, [sp, #5]        
+        strb r0, [sp, #5]
 
         mov r0, sp
         bl toupper
@@ -30,19 +33,19 @@ main:
         mov r0, sp
         bl puts
 
-        /* static memory */
-        
+        /* static allocation */
         ldr r0, =hello_str
         bl toupper
 
         ldr r0, =hello_str
         bl puts
 
-        /* dynamic memory */
+        /* dynamic allocation */
 
         mov r0, #6
         bl malloc
         mov r4, r0
+        
         mov r0, #'h'
         strb r0, [r4]
         mov r0, #'e'
@@ -52,9 +55,9 @@ main:
         mov r0, #'l'
         strb r0, [r4, #3]
         mov r0, #'o'
-        strb r0, [r4, #4]        
+        strb r0, [r4, #4]
         mov r0, #0
-        strb r0, [r4, #5]                
+        strb r0, [r4, #5]
 
         mov r0, r4
         bl toupper
@@ -66,9 +69,8 @@ main:
         ldr lr, [sp]
         add sp, sp, #8
         bx lr
-
 .endfunc
-        
+
 .func toupper
 toupper:
         ldrb r1, [r0]
@@ -82,7 +84,4 @@ toupper_end:
         bx lr
 .endfunc
 .globl puts
-.globl malloc
-        
-
-        
+.globl malloc        
