@@ -1,4 +1,3 @@
-.global main
 .func main
 main:
         mov sp, #16384
